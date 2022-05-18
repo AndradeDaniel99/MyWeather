@@ -12,11 +12,14 @@ import CoreLocation
 // custom cell: collection view
 // API / request to get the data
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet var table: UITableView!
-    
     var models = [Weather]()
+    
+    let locationManager = CLLocationManager()
+    
+    var currentLocation: CLLocation?
 
     override func viewDidLoad() {
         
@@ -30,6 +33,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // location
+    
+    func setupLocation(){
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !locations.isEmpty, currentLocation == nil {
+            currentLocation = locations.first
+            locationManager.stopUpdatingLocation()
+        }
+    }
 
     // table
     
