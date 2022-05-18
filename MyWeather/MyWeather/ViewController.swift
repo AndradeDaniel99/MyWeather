@@ -6,8 +6,8 @@
 //
 
 import UIKit
+import CoreLocation
 
-// Location: CoreLocation
 // table view
 // custom cell: collection view
 // API / request to get the data
@@ -21,11 +21,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         
         // Register 2 cells
+        table.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
+        table.register(WeatherTableViewCell.nib(), forCellReuseIdentifier: WeatherTableViewCell.identifier)
         
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
     }
+    
+    // location
 
     // table
     
