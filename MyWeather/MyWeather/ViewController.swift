@@ -44,7 +44,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !locations.isEmpty, currentLocation == nil {
             currentLocation = locations.first
             locationManager.stopUpdatingLocation()
+            requestWeatherForLocation()
         }
+    }
+    
+    func requestWeatherForLocation(){
+        guard let currentLocation = currentLocation else { return }
+        let long = currentLocation.coordinate.longitude
+        let lat = currentLocation.coordinate.latitude
+        
+        print("\(long) | \(lat) ")
     }
 
     // table
