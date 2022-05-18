@@ -30,6 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
+        
+        setupLocation()
+        
     }
     
     // location
