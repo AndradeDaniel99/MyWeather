@@ -33,6 +33,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return models.count
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 
 }
 
